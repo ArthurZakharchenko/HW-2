@@ -1,0 +1,47 @@
+class
+		name: TV
+			state:
+					onOff - boolean
+					channels - ['channel#1', 'channel#2', 'channel#3', 'channel#4', 'channel#5']
+					currentChannel - number
+					volume - number
+	    behavious:
+	    		getOnOff() - boolean
+	    		on() - void
+	    		off() - void
+	    		nextChannel() - void
+	    		previousChannel() - void
+	    		getChannel() - string 				
+	    		turnUpTheVolume() - void
+	    		turnDownTheVolume() - void
+	    		turnUpTheBrightness() - void
+	    		turnDownTheBrightness() - void
+	  name: window
+	  	state: 
+	  			openClose - boolean
+	  	behavious:
+	  			open() - void
+	  			close() - void
+	  name: louvers
+	  	state: 
+	  			openClose - boolean
+	  	behavious:
+	  			open() - void
+	  			close() - void
+	  name: kettle
+	  	state:
+	  	    standOn - boolean
+	  			onOff - boolean
+	  			temperatureWater - number
+	  			maximumWaterVolume - number
+	  			waterVolume - number
+	  	behavious:
+	  			checkOnStand() - boolean
+	  			on() - void
+	  			off() - void
+	  			turnUpTheTemperature() - void
+	    		turnDownTheTemperature() - void
+	    		checkWaterVolume() - number
+	    		boilingWaterTime() - number
+
+
