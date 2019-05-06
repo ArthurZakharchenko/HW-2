@@ -12,26 +12,26 @@ function TV (onOff, currentChannel, currentVolume, currentBrightness) {
 	TV.prototype._checkCurrentVolume.call(this, currentVolume);
 	TV.prototype._checkCurrentBrightness.call(this, currentBrightness)
 };
-TV.prototype.onOff = function(onOff){
+TV.prototype._onOff = function(onOff){
 		if(typeof onOff == true || onOff == false){
 			this._onOff = onOff
 	}
 }
-TV.prototype.checkCurrentChannel = function(currentChannel){
+TV.prototype._checkCurrentChannel = function(currentChannel){
 		if(typeof this._allChannels[currentChannel] == "undefined"){
 			this._currentChannel = 0
 		}else{
 			this._currentChannel = currentChannel
 		}
 }
-TV.prototype.checkCurrentVolume = function(currentVolume){
+TV.prototype._checkCurrentVolume = function(currentVolume){
 		if(typeof this._volumeParameters[currentVolume] == "undefined"){
 			this._currentVolume = 5
 		}else{
 			this._currentVolume = currentVolume
 		}
 }
-TV.prototype.checkCurrentBrightness = function(currentBrightness){
+TV.prototype._checkCurrentBrightness = function(currentBrightness){
 		if(typeof currentBrightness == 'number' && currentBrightness>=0 && currentBrightness<=100) {
 			this._currentBrightness = currentBrightness
 		}else{
