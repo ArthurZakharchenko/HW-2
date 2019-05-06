@@ -12,49 +12,49 @@ function TV (onOff, currentChannel, currentVolume, currentBrightness) {
 	TV.prototype._checkCurrentVolume.call(this, currentVolume);
 	TV.prototype._checkCurrentBrightness.call(this, currentBrightness)
 };
-TV.prototype._onOff = function(onOff){
+TV.prototype.onOff = function(onOff){
 		if(typeof onOff == true || onOff == false){
 			this._onOff = onOff
 	}
 }
-TV.prototype._checkCurrentChannel = function(currentChannel){
+TV.prototype.checkCurrentChannel = function(currentChannel){
 		if(typeof this._allChannels[currentChannel] == "undefined"){
 			this._currentChannel = 0
 		}else{
 			this._currentChannel = currentChannel
 		}
 }
-TV.prototype._checkCurrentVolume = function(currentVolume){
+TV.prototype.checkCurrentVolume = function(currentVolume){
 		if(typeof this._volumeParameters[currentVolume] == "undefined"){
 			this._currentVolume = 5
 		}else{
 			this._currentVolume = currentVolume
 		}
 }
-TV.prototype._checkCurrentBrightness = function(currentBrightness){
+TV.prototype.checkCurrentBrightness = function(currentBrightness){
 		if(typeof currentBrightness == 'number' && currentBrightness>=0 && currentBrightness<=100) {
 			this._currentBrightness = currentBrightness
 		}else{
 			this._currentBrightness = 30
 		}
 }
-TV.prototype._getOnOff = function() {
+TV.prototype.getOnOff = function() {
 	return this._onOff
 };
 
-TV.prototype._on = function() {
+TV.prototype.on = function() {
 	this._onOff = true;
 };
 
-TV.prototype._off = function() {
+TV.prototype.off = function() {
 	this._onOff = false;
 };
 
-TV.prototype._getCurrentChannel = function() {
+TV.prototype.getCurrentChannel = function() {
 	return this._allChannels[this._currentChannel];
 };
 
-TV.prototype._nextChannel = function() {
+TV.prototype.nextChannel = function() {
 	if(this._currentChannel == 4) {
 		this._currentChannel = 0
 	}else{
@@ -62,7 +62,7 @@ TV.prototype._nextChannel = function() {
 	}
 };
 
-TV.prototype._previousChannel = function() {
+TV.prototype.previousChannel = function() {
 	if(this._currentChannel == 0) {
 		this._currentChannel = 4
 	}else{
@@ -70,34 +70,34 @@ TV.prototype._previousChannel = function() {
 	}
 };
 
-TV.prototype._getCurrentVolume = function() {
+TV.prototype.getCurrentVolume = function() {
 	return this._volumeParameters[this._currentVolume];
 };
 
-TV.prototype._turnUpTheVolume = function() {
+TV.prototype.turnUpTheVolume = function() {
 		if(this._currentVolume !== 10) {
 		this._currentVolume++;
 	}
 };
 
-TV.prototype._turnDownTheVolume = function() {
+TV.prototype.turnDownTheVolume = function() {
 		if(this._currentVolume !== 0) {
 		this._currentVolume--;
 	}
 };
 
-TV.prototype._getCurrentBrightness = function() {
+TV.prototype.getCurrentBrightness = function() {
 	return this._currentBrightness;
 };
 
-TV.prototype._turnUpBrightness = function() {
+TV.prototype.turnUpBrightness = function() {
 	if(this._currentBrightness !== 100) {
 		this._currentBrightness++
 	}
 };
 
 
-TV.prototype._turnDownBrightness = function() {
+TV.prototype.turnDownBrightness = function() {
 	if(this._currentBrightness !== 0) {
 		this._currentBrightness--
 	}
@@ -105,21 +105,21 @@ TV.prototype._turnDownBrightness = function() {
 
 var television = new TV ();
 
-// console.log(television._getOnOff());
-// television._on();
-// television._off();
+// console.log(television.getOnOff());
+// television.on();
+// television.off();
 
-// console.log(television._getCurrentChannel());
-// television._nextChannel();
-// television._previousChannel();
+// console.log(television.getCurrentChannel());
+// television.nextChannel();
+// television.previousChannel();
 
-// console.log(television._getCurrentVolume());
-// television._turnUpTheVolume();
-// television._turnDownTheVolume();
+// console.log(television.getCurrentVolume());
+// television.turnUpTheVolume();
+// television.turnDownTheVolume();
 
-// console.log(television._getCurrentBrightness());
-// television._turnUpBrightness();
-// television._turnDownBrightness();
+// console.log(television.getCurrentBrightness());
+// television.turnUpBrightness();
+// television.turnDownBrightness();
 
 console.dir(television);
 
