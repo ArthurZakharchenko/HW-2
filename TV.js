@@ -122,6 +122,3 @@ var television = new TV ();
 // television.turnDownBrightness();
 
 console.dir(television);
-
-
-
