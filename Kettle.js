@@ -1,5 +1,4 @@
 'use strict'
-
 function Kettle (standOn, onOff, currentTemperature, currentWaterVolume) {
 	this._standOn = true;
 	this._onOff = false;
@@ -13,12 +12,12 @@ function Kettle (standOn, onOff, currentTemperature, currentWaterVolume) {
 	Kettle.prototype._checkCurrentWaterVolume.call(this, currentWaterVolume)
 };
 Kettle.prototype._checkStandOn = function(standOn){
-		if(typeof standOn == true || standOn == false){
+		if(typeof standOn === true || standOn === false){
 			this._standOn = standOn
 	}
 }
 Kettle.prototype._checkOnOff = function(onOff){
-		if(typeof onOff == true || onOff == false){
+		if(onOff == true || onOff == false){
 			this._onOff = onOff
 	}
 }
@@ -36,75 +35,73 @@ Kettle.prototype._checkCurrentWaterVolume = function(currentWaterVolume){
 			this._currentWaterVolume = currentWaterVolume
 		}
 }
-Kettle.prototype.getStandOn = function() {
-	return this._standOn
+
+Kettle.prototype.getOnOff = ONOFF;
+
+Kettle.prototype.on = ON;
+
+Kettle.prototype.off = OFF;
+
+Kettle.prototype.getCurrentTemperature = function () {
+var get = new GET(this._availableTemperature, this._currentTemperature);
+return get.getElem();
 };
 
-Kettle.prototype.getOnOff = function() {
-	return this._onOff
+Kettle.prototype.increaseTemperatures = function () {
+var up = new TURN(this._currentTemperature, 4);
+up.TURNUP();
+this._currentTemperature = up.parametr;
 };
 
-Kettle.prototype.on = function() {
-	this._onOff = true;
+Kettle.prototype.decreaseTemperature = function () {
+var down = new TURN(this._currentTemperature, 0);
+down.TURNDOWN();
+this._currentTemperature = down.parametr;
 };
 
-Kettle.prototype.off = function() {
-	this._onOff = false;
+
+Kettle.prototype.getCurrentWaterVolume = function () {
+var get = new GET(this._availableWaterVolume, this._currentWaterVolume);
+return get.getElem();
 };
 
-Kettle.prototype.getCurrentTemperature = function() {
-	return this._availableTemperature[this._currentTemperature];
+
+Kettle.prototype.increaseWaterVolume = function () {
+var up = new TURN(this._currentWaterVolume, 15);
+up.TURNUP();
+this._currentWaterVolume = up.parametr;
 };
 
-Kettle.prototype.increaseTemperatures = function() {
-		if(this._currentTemperatures !== 4) {
-		this._currentTemperatures++;
-	}
+
+Kettle.prototype.decreaseWaterVolume = function () {
+var down = new TURN(this._currentWaterVolume, 0);
+down.TURNDOWN();
+this._currentWaterVolume = down.parametr;
 };
 
-Kettle.prototype.decreaseTemperature = function() {
-		if(this._currentTemperature !== 0) {
-		this._currentTemperature--;
-	}
-};
 
-Kettle.prototype.getCurrentWaterVolume = function() {
-	return this._availableWaterVolume[this._currentWaterVolume];
-};
-
-Kettle.prototype.increaseWaterVolume = function() {
-		if(this._currentWaterVolume !== 15) {
-		this._currentWaterVolume++;
-	}
-};
-
-Kettle.prototype.decreaseWaterVolume = function() {
-		if(this._currentWaterVolume !== 0) {
-		this._currentWaterVolume--;
-	}
-};
 Kettle.prototype.boilingWaterTime = function() {
 	var boilingWaterTime = (4*2.5*(this._currentWaterVolume/10)*3000)/((this._currentTemperature + 6)*10 - 20);
 	return (~~boilingWaterTime + ' sec');
 };
 
 
-var LG = new Kettle ();
+// var LG = new Kettle ();
 
-// console.log(LG.getOnOff());
-// LG.on();
-// LG.off();
+// // console.log(LG.getOnOff());
+// // LG.on();
+// // LG.off();
 
-// console.log(LG.getCurrentTemperature());
-// LG.increaseTemperatures();
-// LG.decreaseTemperatures();
+// // console.log(LG.getCurrentTemperature());
+// // LG.increaseTemperatures();
+// // LG.decreaseTemperatures();
 
-// // console.log(LG.getCurrentWaterVolume());
-// // // LG.increaseWaterVolume();
-// // // LG.decreaseWaterVolume();
-// LG.boilingWaterTime();
+// // // console.log(LG.getCurrentWaterVolume());
+// // // // LG.increaseWaterVolume();
+// // // // LG.decreaseWaterVolume();
+// // LG.boilingWaterTime();
 
-console.dir(LG);
+// console.dir(LG);
 
 
 
