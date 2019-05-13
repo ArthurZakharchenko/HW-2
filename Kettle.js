@@ -43,40 +43,38 @@ Kettle.prototype.on = ON;
 Kettle.prototype.off = OFF;
 
 Kettle.prototype.getCurrentTemperature = function () {
-var get = new GET(this._availableTemperature, this._currentTemperature);
-return get.getElem();
+ return this._availableTemperature[this._currentTemperature];
 };
 
 Kettle.prototype.increaseTemperatures = function () {
-var up = new TURN(this._currentTemperature, 4);
-up.TURNUP();
-this._currentTemperature = up.parametr;
+ if(this._currentTemperature !== 4) {
+		this._currentTemperature++;
+	}
 };
 
 Kettle.prototype.decreaseTemperature = function () {
-var down = new TURN(this._currentTemperature, 0);
-down.TURNDOWN();
-this._currentTemperature = down.parametr;
+ if(this._currentTemperature !== 0) {
+		this._currentTemperature--;
+	}
 };
 
 
 Kettle.prototype.getCurrentWaterVolume = function () {
-var get = new GET(this._availableWaterVolume, this._currentWaterVolume);
-return get.getElem();
+ return this._availableWaterVolume[this._currentWaterVolume];
 };
 
 
 Kettle.prototype.increaseWaterVolume = function () {
-var up = new TURN(this._currentWaterVolume, 15);
-up.TURNUP();
-this._currentWaterVolume = up.parametr;
+ if(this._currentWaterVolume !== 15) {
+		this._currentWaterVolume++;
+	}
 };
 
 
 Kettle.prototype.decreaseWaterVolume = function () {
-var down = new TURN(this._currentWaterVolume, 0);
-down.TURNDOWN();
-this._currentWaterVolume = down.parametr;
+ if(this._currentWaterVolume !== 0) {
+		this._currentWaterVolume--;
+	}
 };
 
 

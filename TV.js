@@ -45,8 +45,7 @@ TV.prototype.on = ON;
 TV.prototype.off = OFF;
 
 TV.prototype.getCurrentChannel = function () {
-var get = new GET(this._allChannels, this._currentChannel);
-return get.getElem();
+ return this._allChannels[this._currentChannel];
 };
 
 TV.prototype.nextChannel = function() {
@@ -66,20 +65,19 @@ TV.prototype.previousChannel = function() {
 };
 
 TV.prototype.getCurrentVolume = function () {
-var get = new GET(this._volumeParameters, this._currentVolume);
-return get.getElem();
+ return this._volumeParameters[this._currentVolume];
 };
 
 TV.prototype.turnUpTheVolume = function () {
-var up = new TURN(this._currentVolume, 10);
-up.TURNUP();
-this._currentVolume = up.parametr;
+ if(this._currentVolume !== 10) {
+		this._currentVolume++;
+	}
 };
 
 TV.prototype.turnDownTheVolume = function () {
-var down = new TURN(this._currentVolume, 0);
-down.TURNDOWN();
-this._currentVolume = down.parametr;
+ if(this._currentVolume !== 0) {
+		this._currentVolume--;
+	}
 };
 
 TV.prototype.getCurrentBrightness = function() {
@@ -87,18 +85,17 @@ TV.prototype.getCurrentBrightness = function() {
 };
 
 TV.prototype.turnUpBrightness = function () {
-var up = new TURN(this._currentBrightness, 100);
-up.TURNUP();
-this._currentBrightness = up.parametr;
+ if(this._currentBrightness !== 100) {
+		this._currentBrightness++;
+	}
 };
 
 
 TV.prototype.turnDownBrightness = function () {
-var down = new TURN(this._currentBrightness, 0);
-down.TURNDOWN();
-this._currentBrightness = down.parametr;
+ if(this._currentBrightness !== 0) {
+		this._currentBrightness--;
+	}
 };
-
 // var television = new TV ();
 
 // // console.log(television.getOnOff());
